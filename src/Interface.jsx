@@ -26,7 +26,6 @@ const ButtonStyle = {
 
 export default class Interface extends Component {
   componentDidMount() {
-    this.setState({ running: true });
     setInterval(() => this.setState({
       hps: miner.getHashesPerSecond().toFixed(3),
       as: miner.getAcceptedHashes(true),
@@ -45,19 +44,14 @@ export default class Interface extends Component {
           <button style={ButtonStyle} onclick={() => miner.setNumThreads(this.state.nt - 1)}>-</button>
           <button style={ButtonStyle} onclick={() => miner.setNumThreads(this.state.nt + 1)}>+</button>
           <br />
-          <button style={ButtonStyle} onclick={this.stop.bind(this)}>{this.state.running ? 'STOP' : 'START'}</button>
+          <button style={ButtonStyle} onclick={this.toggle}>{miner.isRunning() ? 'STOP' : 'START'}</button>
         </h2>
       </div>
     );
   }
 
-  stop() {
-    if (this.state.running) {
-      miner.stop();
-      this.setState({ running: false });
-    } else {
-      miner.start();
-      this.setState({ running: true });
-    }
+  toggle() {
+    if (miner.isRunning()) miner.stop();
+    else miner.start();
   }
 }
