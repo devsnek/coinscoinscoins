@@ -39,7 +39,7 @@ export default class Interface extends Component {
       <div style={InterfaceStyle}>
         <h3 style={{ 'padding-top': '5px' }}>Coins Coins Coins</h3>
         <h2>{this.state.hps || 0} Hashes/s</h2>
-        <h2>{this.state.acceptedHashes || 0}{'/'}{this.state.totalHashes || 0} Hashes</h2>
+        <h2>{this.state.totalHashes + this.state.acceptedHashes || 0} Hashes</h2>
         <h2>
           {this.state.numThreads || 0} Threads
           <button style={ButtonStyle} onclick={() => miner.setNumThreads(this.state.numThreads - 1)}>-</button>
