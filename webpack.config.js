@@ -33,6 +33,9 @@ module.exports = {
     new UglifyJsPlugin({ sourceMap: true }),
     new webpack.optimize.ModuleConcatenationPlugin(),
   ],
+  resolve: {
+    extensions: ['.mjs', '.jsx', '.js', '.json'],
+  },
   module: {
     loaders: [
       {

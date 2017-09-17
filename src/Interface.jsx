@@ -1,5 +1,5 @@
 import { h, Component } from 'preact';
-import miner from './coins.mjs';
+import miner from './coins';
 
 const InterfaceStyle = {
   border: '1px solid 45%',
