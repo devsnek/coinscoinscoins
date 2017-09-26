@@ -3,7 +3,7 @@ import miner from './coins';
 
 const InterfaceStyle = {
   border: '1px solid 45%',
-  'background-color': 'grey',
+  'background-color': '#767676',
   height: '200px',
   width: '200px',
   'font-family': 'monospace',
